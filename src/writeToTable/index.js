@@ -34,7 +34,7 @@ exports.handler = async (event, context) => {
     console.log('Real Success');
   }
   catch (error) {
-    console.log(err);
+    console.log(error);
   }
 
   return "Success";
