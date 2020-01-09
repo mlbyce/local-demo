@@ -22,7 +22,7 @@ Resources:
         Variables:
           TABLE_NAME: !Ref Data
           TABLE_ARN: !GetAtt Data.Arn
-          CUST_KEY: !Ref EnvConfigapiKeyAsString
+          API_KEY: !Ref EnvConfigapiKeyAsString
   Data:
     Type: AWS::DynamoDB::Table
     Properties:
