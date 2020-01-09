@@ -22,6 +22,7 @@ Resources:
         Variables:
           TABLE_NAME: !Ref Data
           TABLE_ARN: !GetAtt Data.Arn
+          CUST_KEY: !Ref EnvConfigapiKeyAsString
   Data:
     Type: AWS::DynamoDB::Table
     Properties:
@@ -42,3 +43,9 @@ Parameters:
   EnvironmentTagName:
     Type: String
     Description: Environment Name (injected by Stackery at deployment time)
+  EnvConfigapiKeyAsString:
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: /<EnvironmentName>/apiKey
+Metadata:
+  EnvConfigParameters:
+    EnvConfigapiKeyAsString: apiKey
