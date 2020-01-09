@@ -22,7 +22,8 @@ Resources:
         Variables:
           TABLE_NAME: !Ref Data
           TABLE_ARN: !GetAtt Data.Arn
-          API_KEY: !Ref EnvConfigapiKeyAsString
+          A_KEY: !Ref EnvConfigtestapiKeyAsString
+          B_KEY: !Ref EnvConfigtestjunkKeyAsString
   Data:
     Type: AWS::DynamoDB::Table
     Properties:
@@ -43,9 +44,13 @@ Parameters:
   EnvironmentTagName:
     Type: String
     Description: Environment Name (injected by Stackery at deployment time)
-  EnvConfigapiKeyAsString:
+  EnvConfigtestapiKeyAsString:
     Type: AWS::SSM::Parameter::Value<String>
-    Default: /<EnvironmentName>/apiKey
+    Default: /<EnvironmentName>/test/apiKey
+  EnvConfigtestjunkKeyAsString:
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: /<EnvironmentName>/test/junkKey
 Metadata:
   EnvConfigParameters:
-    EnvConfigapiKeyAsString: apiKey
+    EnvConfigtestapiKeyAsString: test.apiKey
+    EnvConfigtestjunkKeyAsString: test.junkKey
