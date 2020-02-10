@@ -16,6 +16,7 @@ exports.handler = async (event, context) => {
       ConditionExpression: 'attribute_not_exists(id)',
       ReturnConsumedCapacity: 'TOTAL'
     };
+
     const p = db.put(params)
       .promise()
       .then(() => {
@@ -24,8 +25,9 @@ exports.handler = async (event, context) => {
       .catch((error) => {
         console.log('Some Badness');
         console.log(error.message);
+        console.log(process.env.A_KEY);
+        console.log(process.env.B_KEY);
       });
-
     promiseArray.push(p);
   }
 
